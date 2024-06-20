@@ -38,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool darkmode = false;
   dynamic savedThemeMode;
-  // late String iconAdress;
+  late String iconAdress;
 
   void initState() {
     super.initState();
@@ -51,13 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
       print('thème sombre');
       setState(() {
         darkmode = true;
-        // iconAdress = 'assets/icon/dark-icon.png';
+        iconAdress = "assets/icon/dark-icon.png";
       });
     } else {
       print('thème clair');
       setState(() {
         darkmode = false;
-        // iconAdress = 'assets/icon/ligth-icon.png';
+        iconAdress = "assets/icon/ligth-icon.png";
       });
     }
   }
@@ -66,15 +66,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 3, 245, 84),
         centerTitle: true,
-        title: Text(widget.title),
+        title: const Text(
+          "PARAMETRE",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SwitchListTile(
-              title: Text('Mode sombre'),
+              title: Text("Changer le thème de l'App"),
               activeColor: Colors.orange,
               secondary: const Icon(Icons.nightlight_round),
               value: darkmode,
@@ -82,10 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(value);
                 if (value == true) {
                   AdaptiveTheme.of(context).setDark();
-                  // iconAdress = 'assets/icon/dark-icon.png';
+                  iconAdress = 'assets/icon/dark-icon.png';
                 } else {
                   AdaptiveTheme.of(context).setLight();
-                  // iconAdress = 'assets/icon/ligth-icon.png';
+                  iconAdress = 'assets/icon/ligth-icon.png';
                 }
                 setState(() {
                   darkmode = value;
